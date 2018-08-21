@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "232100158430",
+    "firebase_url": "https://rps-quickdemo.firebaseio.com",
+    "project_id": "rps-quickdemo",
+    "storage_bucket": "rps-quickdemo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:232100158430:android:97af6c494810eec5",
+        "android_client_info": {
+          "package_name": "com.example.shivamgandhi.rockpaperscissors"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "232100158430-cgi2jpeit1j8tp0af5qgledu1t7dnrdt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrnHRkWMF-DTN7emklgrnWLLTIYJ1z8vs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
