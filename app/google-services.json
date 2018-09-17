@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "232100158430",
-    "firebase_url": "https://rps-quickdemo.firebaseio.com",
-    "project_id": "rps-quickdemo",
-    "storage_bucket": "rps-quickdemo.appspot.com"
+    "project_number": "210083195583",
+    "firebase_url": "https://multiplayer-rps-d1789.firebaseio.com",
+    "project_id": "multiplayer-rps-d1789",
+    "storage_bucket": "multiplayer-rps-d1789.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:232100158430:android:97af6c494810eec5",
+        "mobilesdk_app_id": "1:210083195583:android:97af6c494810eec5",
         "android_client_info": {
           "package_name": "com.example.shivamgandhi.rockpaperscissors"
         }
       },
       "oauth_client": [
         {
-          "client_id": "232100158430-cgi2jpeit1j8tp0af5qgledu1t7dnrdt.apps.googleusercontent.com",
+          "client_id": "210083195583-d8a0ou4m2r8ite51j5djtolf9tn2cp5d.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDrnHRkWMF-DTN7emklgrnWLLTIYJ1z8vs"
+          "current_key": "AIzaSyAM1b4e03ULIFFEykb-dvrlpywAN27d3mI"
         }
       ],
       "services": {

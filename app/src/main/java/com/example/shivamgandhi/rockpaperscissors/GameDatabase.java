@@ -9,12 +9,15 @@ public class GameDatabase {
 
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mDatabaseReference;
+    Vars mVars;
+    Player mPlayer;
 
     public void GameDatabase(){}
 
     public void initializeVariable(){
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mFirebaseDatabase.getReference();
+        mVars = Vars.getInstance();
     }
 
     // --------------------------------------------------------------------------------------------- //
@@ -28,6 +31,8 @@ public class GameDatabase {
         DatabaseReference games = mDatabaseReference.child("Games");
         DatabaseReference game = games.child(generateRandomNumber());
         game.child("status").setValue("waiting");
+        game.child("latitude").setValue("0");
+        game.child("longitude").setValue("0");
         return game.getKey();
     }
 
@@ -48,6 +53,23 @@ public class GameDatabase {
         return randomNumber;
     }
 
+    // --------------------------------------------------------------------------------------------- //
 
+    /**
+     * Function to join(player) into the existing game
+     * @return PlayerID
+     */
+    public String joinGame(){
+
+        initializeVariable();
+        mPlayer = new Player("player name", "default", "none", "not ready",0.0,0.0);
+        DatabaseReference games = mDatabaseReference.child("Games");
+        DatabaseReference game = games.child(mVars.getGameID());
+        DatabaseReference players = game.child("Players");
+        DatabaseReference player = players.push();
+        player.setValue(mPlayer);
+
+        return player.getKey();
+    }
 
 }

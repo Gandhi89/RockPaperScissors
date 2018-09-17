@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     DatabaseReference mDatabaseReference;
     GameDatabase mGameDatabase;
     FirebaseAuth mFirebaseAuth;
+    Vars mVars;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
     private static final int RC_SIGN_IN = 123;
 
@@ -97,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initializeAll() {
+        mVars = Vars.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mFirebaseDatabase.getReference();
         mGameDatabase = new GameDatabase();
@@ -113,9 +115,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 /**
                  * create new game
                  */
-
-                Log.d("MainActivity/GameID",mGameDatabase.createGame());
-
+                mVars.setGameID(mGameDatabase.createGame());
+                Log.d("MainActivity/GameID",mVars.getGameID());
+                mVars.setPlayerID(mGameDatabase.joinGame());
+                Log.d("MainActivity/PlayerID",mVars.getPlayerID());
                 break;
             case R.id.MainActivity_joinGameBtn:
                 break;
