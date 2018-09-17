@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         onClickEvents();
         addAuthListner();
 
+
+        /**
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -65,19 +67,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         };
-
+        **/
     }// end of onCreate()
 
     @Override
     protected void onResume() {
         super.onResume();
-        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
+        Log.d("MainActivity/Resume","Activity in foreground");
+        //mFirebaseAuth.addAuthStateListener(mAuthStateListener);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
+        Log.d("MainActivity/Pause","Activity in backgroung");
+        //mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
     }
 
     /**
@@ -109,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 /**
                  * create new game
                  */
+
                 Log.d("MainActivity/GameID",mGameDatabase.createGame());
 
                 break;
