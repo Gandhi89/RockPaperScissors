@@ -1,5 +1,6 @@
 package com.example.shivamgandhi.rockpaperscissors;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -117,8 +118,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                  */
                 mVars.setGameID(mGameDatabase.createGame());
                 Log.d("MainActivity/GameID",mVars.getGameID());
+                /**
+                 * join player into existing game
+                 */
                 mVars.setPlayerID(mGameDatabase.joinGame());
                 Log.d("MainActivity/PlayerID",mVars.getPlayerID());
+
+                Intent i = new Intent(MainActivity.this,PlayersInGame.class);
+                startActivity(i);
                 break;
             case R.id.MainActivity_joinGameBtn:
                 break;
