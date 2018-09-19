@@ -10,12 +10,16 @@ public class Vars {
         return singleton;
     }
 
+    // -------------------------------------------------------------------------------------------- //
+
     // ServerEnd
     private String gameID = "";
 
     // UserEnd
     private String playerName = "";
+    private String playerID = "";
 
+    // -------------------------------------------------------------------------------------------- //
     public String getGameID() {
         return gameID;
     }
@@ -40,5 +44,5 @@ public class Vars {
         this.playerID = playerID;
     }
 
-    private String playerID = "";
+
 }

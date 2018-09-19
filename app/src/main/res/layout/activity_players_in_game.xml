@@ -51,7 +51,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="31dp"
-        android:background="@color/colorPrimary"
-        android:textColor="#ffffff"/>
+        android:textColor="#111111"/>
 
 </RelativeLayout>

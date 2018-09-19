@@ -73,9 +73,9 @@ public class PlayersInGame extends AppCompatActivity implements View.OnClickList
             Log.d("datasnap",dataSnapshot.toString());
 
             Player mPlayer = dataSnapshot.getValue(Player.class);
-            showPlayers.append("/n");
+            showPlayers.append("\n");
             showPlayers.append(mPlayer.name);
-            showPlayers.append("/n");
+            showPlayers.append("\n");
 
         }
 
