@@ -16,7 +16,7 @@ public class Vars {
     private String gameID = "";
 
     // UserEnd
-    private String playerName = "";
+    private String playerName = "p";
     private String playerID = "";
     private String RPSvalue = "none";
     private Double latitude = 0.0;
