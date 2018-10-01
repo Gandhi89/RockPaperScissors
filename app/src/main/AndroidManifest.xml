@@ -20,7 +20,8 @@
         </activity>
         <activity android:name=".PlayersInGame" />
         <activity android:name=".JoinGame" />
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".CalculateResultActivity"></activity>
     </application>
 
 </manifest>
