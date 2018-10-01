@@ -28,7 +28,7 @@ public class CalculateResultActivity extends AppCompatActivity {
     DatabaseReference mDatabaseReference;
     int count_r = 0, count_p = 0, count_s = 0, count_none = 0;
     Vars mVars;
-    Boolean isChampion = true;
+    Boolean isChampion = false;
     ArrayList<String> winingStatus = new ArrayList<>();
     String getWiningStatus_r, getWiningStatus_p, getWiningStatus_s;
 
@@ -79,10 +79,8 @@ public class CalculateResultActivity extends AppCompatActivity {
         // if player wins or draw -> play again
         if (resultTv.getText().toString().equals("win"))
         {
-            // check if only one player left in game?
-            checkIfChampion();
-            wait4sec();
-
+            // SYNC [So that player with "lose" status can be removed from database]
+            wait5sec();
         }
         else if(resultTv.getText().toString().equals("draw"))
         {
@@ -101,6 +99,23 @@ public class CalculateResultActivity extends AppCompatActivity {
 
     }
 
+    private void wait5sec() {
+        new CountDownTimer(5000,1000)
+        {
+            @Override
+            public void onTick(long l) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                // check if only one player left in game?
+                checkIfChampion();
+                wait4sec();
+            }
+        }.start();
+    }
+
     private void checkIfChampion() {
         Log.d("CalculateResult/ckchmp","inside CheckIfChampion method.");
 
@@ -108,9 +123,9 @@ public class CalculateResultActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                if(dataSnapshot.getChildrenCount()>0)
+                if(dataSnapshot.getChildrenCount() == 1)
                 {
-                    isChampion = false;
+                    isChampion = true;
                 }
             }
 
