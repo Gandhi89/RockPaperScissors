@@ -85,7 +85,7 @@ public class GameDatabase {
         mPlayer = new Player(playerName, mVars.getStatus(), RPSvalue, mVars.getReady(),mVars.getLatitude(),mVars.getLongitude());
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mFirebaseDatabase.getReference();
-        mDatabaseReference.child("game").child(mVars.getGameID()).child("players").child(mVars.getPlayerID()).setValue(mPlayer);
+        mDatabaseReference.child("Games").child(mVars.getGameID()).child("Players").child(mVars.getPlayerID()).setValue(mPlayer);
     }
 
 }
