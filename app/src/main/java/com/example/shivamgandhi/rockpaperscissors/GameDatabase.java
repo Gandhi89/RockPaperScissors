@@ -409,4 +409,16 @@ public class GameDatabase {
             }
         });
     }
+
+    // -------------------------------------------------------------------------------------------------------- //
+
+    /**
+     * Function to remove player from Game
+     */
+    public void removePlayerFromGame(){
+
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference = mFirebaseDatabase.getReference();
+        mDatabaseReference.child("Games").child(mVars.getGameID()).child("Players").child(mVars.getPlayerID()).removeValue();
+    }
 }

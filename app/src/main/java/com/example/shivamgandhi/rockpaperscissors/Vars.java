@@ -23,7 +23,7 @@ public class Vars {
     private Double longitude = 0.0;
     private String ready = "not ready";
     private String status = "default";
-    private String primarykey = "";
+
 
     // -------------------------------------------------------------------------------------------- //
     public String getGameID() {
@@ -88,14 +88,6 @@ public class Vars {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getPrimarykey() {
-        return primarykey;
-    }
-
-    public void setPrimarykey(String primarykey) {
-        this.primarykey = primarykey;
     }
 
 }
