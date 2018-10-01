@@ -15,6 +15,7 @@ public class GameDatabase {
     public void GameDatabase(){}
 
     public void initializeVariable(){
+
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mFirebaseDatabase.getReference();
         mVars = Vars.getInstance();
@@ -27,6 +28,7 @@ public class GameDatabase {
      * @return gameID
      */
     public String createGame(){
+
         initializeVariable();
         DatabaseReference games = mDatabaseReference.child("Games");
         DatabaseReference game = games.child(generateRandomNumber());
@@ -45,11 +47,9 @@ public class GameDatabase {
     public String generateRandomNumber(){
 
         String randomNumber = "";
-
         Random rnd = new Random();
         int n = 100000 + rnd.nextInt(900000);
         randomNumber = String.valueOf(n);
-
         return randomNumber;
     }
 
@@ -70,6 +70,22 @@ public class GameDatabase {
         player.setValue(mPlayer);
 
         return player.getKey();
+    }
+
+    // --------------------------------------------------------------------------------------------- //
+
+    /**
+     * Function to set RPSvalue of player
+     * @param playerName
+     * @param RPSvalue
+     */
+    public void setRPSvalue(String playerName, String RPSvalue){
+
+        mVars = Vars.getInstance();
+        mPlayer = new Player(playerName, mVars.getStatus(), RPSvalue, mVars.getReady(),mVars.getLatitude(),mVars.getLongitude());
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference = mFirebaseDatabase.getReference();
+        mDatabaseReference.child("game").child(mVars.getGameID()).child("players").child(mVars.getPlayerID()).setValue(mPlayer);
     }
 
 }

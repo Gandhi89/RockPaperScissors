@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".PlayersInGame" />
-        <activity android:name=".JoinGame"></activity>
+        <activity android:name=".JoinGame" />
+        <activity android:name=".HomeActivity"></activity>
     </application>
 
 </manifest>

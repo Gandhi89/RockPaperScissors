@@ -1,5 +1,6 @@
 package com.example.shivamgandhi.rockpaperscissors;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -60,7 +61,8 @@ public class PlayersInGame extends AppCompatActivity implements View.OnClickList
         switch (view.getId()){
 
             case R.id.PlayerInGame_start:
-
+                Intent intent = new Intent(PlayersInGame.this,HomeActivity.class);
+                startActivity(intent);
                 break;
 
         }

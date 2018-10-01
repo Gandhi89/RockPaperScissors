@@ -18,6 +18,12 @@ public class Vars {
     // UserEnd
     private String playerName = "";
     private String playerID = "";
+    private String RPSvalue = "none";
+    private Double latitude = 0.0;
+    private Double longitude = 0.0;
+    private String ready = "not ready";
+    private String status = "default";
+    private String primarykey = "";
 
     // -------------------------------------------------------------------------------------------- //
     public String getGameID() {
@@ -44,5 +50,52 @@ public class Vars {
         this.playerID = playerID;
     }
 
+    public String getRPSvalue() {
+        return RPSvalue;
+    }
+
+    public void setRPSvalue(String RPSvalue) {
+        this.RPSvalue = RPSvalue;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getReady() {
+        return ready;
+    }
+
+    public void setReady(String ready) {
+        this.ready = ready;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getPrimarykey() {
+        return primarykey;
+    }
+
+    public void setPrimarykey(String primarykey) {
+        this.primarykey = primarykey;
+    }
 
 }
