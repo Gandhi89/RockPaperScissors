@@ -15,14 +15,14 @@ public class User {
 
     }
 
-    public User(String a, String b, int c,int h, String d, double e, double f, String g) {
-        Email = a;
-        userName = b;
-        won = c;
-        played = h;
-        title = d;
-        lat = e;
-        log = f;
-        Status = g;
+    public User(String email, String userName, int won,int played, String title, double lat, double log, String status) {
+        Email = email;
+        this.userName = userName;
+        this.won = won;
+        this.played = played;
+        this.title = title;
+        this.lat = lat;
+        this.log = log;
+        Status = status;
     }
 }

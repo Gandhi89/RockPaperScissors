@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.example.shivamgandhi.rockpaperscissors.Utils.Player;
+import com.example.shivamgandhi.rockpaperscissors.Utils.User;
 import com.example.shivamgandhi.rockpaperscissors.Utils.Vars;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -12,6 +13,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 public class GameDatabase {
@@ -19,6 +21,7 @@ public class GameDatabase {
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mDatabaseReference;
     Vars mVars;
+    User mUser;
     Player mPlayer;
     int point_r = 0;
     int point_p = 0;
@@ -431,14 +434,39 @@ public class GameDatabase {
      * @param lat
      * @param log
      */
-    public void updateLocation(Double lat, Double log){
+    public void updateLocation(final Double lat, final Double log){
 
         mVars = Vars.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mFirebaseDatabase.getReference();
-        mPlayer = new Player(mVars.getPlayerName(),mVars.getStatus(),mVars.getRPSvalue(),mVars.getReady(),lat,log);
+        final String primaryKey = mVars.getPrimaryKey();
+        if(primaryKey == null)
+        {
+            return;
+        }
 
-        mDatabaseReference.child("Games").child(mVars.getGameID()).child("Players").child(mVars.getPlayerID()).setValue(mPlayer);
+
+        mDatabaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot postdataSnapshot : dataSnapshot.getChildren()){
+                    if (primaryKey.equals(postdataSnapshot.getKey()))
+                    {
+                        User user = postdataSnapshot.getValue(User.class);
+                        user.lat = lat;
+                        user.log = log;
+
+                        mDatabaseReference.child("Users").child(postdataSnapshot.getKey()).setValue(user);
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
     }
 }
