@@ -1,4 +1,4 @@
-package com.example.shivamgandhi.rockpaperscissors;
+package com.example.shivamgandhi.rockpaperscissors.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.shivamgandhi.rockpaperscissors.R;
+import com.example.shivamgandhi.rockpaperscissors.Utils.Vars;
 
 public class JoinGame extends AppCompatActivity implements View.OnClickListener {
 

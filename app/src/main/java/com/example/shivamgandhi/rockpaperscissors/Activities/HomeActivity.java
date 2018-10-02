@@ -1,15 +1,17 @@
-package com.example.shivamgandhi.rockpaperscissors;
+package com.example.shivamgandhi.rockpaperscissors.Activities;
 
 import android.content.Intent;
 import android.hardware.SensorManager;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.shivamgandhi.rockpaperscissors.R;
+import com.example.shivamgandhi.rockpaperscissors.Utils.Player;
+import com.example.shivamgandhi.rockpaperscissors.Utils.Vars;
 import com.squareup.seismic.ShakeDetector;
 
 import java.util.Random;

@@ -38,5 +38,10 @@ dependencies {
     //Gesture
     implementation 'com.squareup:seismic:1.0.2'
 
+    // google map and location
+    implementation 'com.google.android.gms:play-services-maps:15.0.1'
+    implementation 'com.google.android.gms:play-services-location:15.0.1'
+    implementation 'com.karumi:dexter:4.2.0'
+
 }
 apply plugin: 'com.google.gms.google-services'

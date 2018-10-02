@@ -1,8 +1,10 @@
-package com.example.shivamgandhi.rockpaperscissors;
+package com.example.shivamgandhi.rockpaperscissors.Activities;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.example.shivamgandhi.rockpaperscissors.Utils.Player;
+import com.example.shivamgandhi.rockpaperscissors.Utils.Vars;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -422,4 +424,21 @@ public class GameDatabase {
         mDatabaseReference.child("Games").child(mVars.getGameID()).child("Players").child(mVars.getPlayerID()).removeValue();
     }
 
+    // --------------------------------------------------------------------------------------------- //
+
+    /**
+     * Function to update location of Player
+     * @param lat
+     * @param log
+     */
+    public void updateLocation(Double lat, Double log){
+
+        mVars = Vars.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference = mFirebaseDatabase.getReference();
+        mPlayer = new Player(mVars.getPlayerName(),mVars.getStatus(),mVars.getRPSvalue(),mVars.getReady(),lat,log);
+
+        mDatabaseReference.child("Games").child(mVars.getGameID()).child("Players").child(mVars.getPlayerID()).setValue(mPlayer);
+
+    }
 }

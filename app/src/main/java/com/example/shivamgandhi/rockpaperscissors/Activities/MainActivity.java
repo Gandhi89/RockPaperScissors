@@ -1,22 +1,17 @@
-package com.example.shivamgandhi.rockpaperscissors;
+package com.example.shivamgandhi.rockpaperscissors.Activities;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.firebase.ui.auth.AuthUI;
+import com.example.shivamgandhi.rockpaperscissors.R;
+import com.example.shivamgandhi.rockpaperscissors.Utils.Vars;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 

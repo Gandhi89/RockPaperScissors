@@ -1,4 +1,4 @@
-package com.example.shivamgandhi.rockpaperscissors;
+package com.example.shivamgandhi.rockpaperscissors.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -11,6 +11,8 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.shivamgandhi.rockpaperscissors.R;
+import com.example.shivamgandhi.rockpaperscissors.Utils.Vars;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

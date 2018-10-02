@@ -1,4 +1,4 @@
-package com.example.shivamgandhi.rockpaperscissors;
+package com.example.shivamgandhi.rockpaperscissors.Utils;
 
 public class Player {
     public String name;
