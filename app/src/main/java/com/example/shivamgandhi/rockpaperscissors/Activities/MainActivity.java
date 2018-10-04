@@ -49,7 +49,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         onClickEvents();
         addAuthListner();
 
-        Log.d("MainScreen/Log","failure");
+        /**
+         * check if user is signed in or not
+         */
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -71,6 +73,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             isRegistered = true;
 
                             mVars.setPrimaryKey((String) mentry.getKey());
+
+                            // set up Vars class
                             mGameDatabase.setupVars((String) mentry.getKey());
 
                         }
@@ -88,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     }
                     else {
+
                         Log.d("MainScreen/Log","inside unRegistered");
                         mVars.setTitle("beginner");
                         mVars.setWon(0);
@@ -123,6 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onResume() {
         super.onResume();
         Log.d("MainActivity/Resume","Activity in foreground");
+        mGameDatabase.updateUserStatus("online");
         mFirebaseAuth.addAuthStateListener(mAuthStateListener);
     }
 
@@ -130,6 +136,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onPause() {
         super.onPause();
         Log.d("MainActivity/Pause","Activity in backgroung");
+        mGameDatabase.updateUserStatus("offline");
         mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
     }
 
@@ -163,17 +170,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()){
             case R.id.MainActivity_createGameBtn:
                 /**
-                 * create new game
+                 * create new game with one player in it
                  */
-                mVars.setGameID(mGameDatabase.createGame());
-                Log.d("MainActivity/GameID",mVars.getGameID());
-                /**
-                 * join player into existing game
-                 */
-                mVars.setPlayerID(mGameDatabase.joinGame());
+                mVars.setGameID(mGameDatabase.createGame(mVars.getLatitude(),mVars.getLongitude()));
+                mVars.setPlayerID(mGameDatabase.joinGame(mVars.getPlayerName(),mVars.getLatitude(),mVars.getLongitude()));
                 Log.d("MainActivity/PlayerID",mVars.getPlayerID());
 
-                Intent i = new Intent(MainActivity.this,PlayersInGame.class);
+                Intent i = new Intent(MainActivity.this,WaitingActivity.class);
                 startActivity(i);
                 break;
             case R.id.MainActivity_joinGameBtn:
@@ -188,10 +191,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void onSignInInitiaize(String email, String name, int won,int played, String title, double lat, double log, String status) {
 
         mVars.setPlayerName(name);
+
+        // add new user to database
         mVars.setPrimaryKey(mGameDatabase.addUser(email, name, won,played, title, lat, log, status));
+        // add new entry to registered users array [locally]
         this.credential.put(mVars.getPrimaryKey(),email);
         mVars.setUserCredential(this.credential);
-
+        // set up Vars class
         mGameDatabase.setupVars(mVars.getPrimaryKey());
     }
 

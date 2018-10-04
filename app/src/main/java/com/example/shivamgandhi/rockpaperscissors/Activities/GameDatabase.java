@@ -46,14 +46,14 @@ public class GameDatabase {
      * Function to create new game
      * @return gameID
      */
-    public String createGame(){
+    public String createGame(Double lat, Double log){
 
         initializeVariable();
         DatabaseReference games = mDatabaseReference.child("Games");
         DatabaseReference game = games.child(generateRandomNumber());
         game.child("status").setValue("waiting");
-        game.child("latitude").setValue("0");
-        game.child("longitude").setValue("0");
+        game.child("latitude").setValue(lat);
+        game.child("longitude").setValue(log);
         return game.getKey();
     }
 
@@ -78,10 +78,10 @@ public class GameDatabase {
      * Function to join(player) into the existing game
      * @return PlayerID
      */
-    public String joinGame(){
+    public String joinGame(String playerName,Double lat, Double log){
 
         initializeVariable();
-        mPlayer = new Player("player name", "default", "none", "not ready",0.0,0.0);
+        mPlayer = new Player(playerName, "default", "none", "not ready",lat,log);
         DatabaseReference games = mDatabaseReference.child("Games");
         DatabaseReference game = games.child(mVars.getGameID());
         DatabaseReference players = game.child("Players");
@@ -516,6 +516,7 @@ public class GameDatabase {
      * @param status
      */
     public void updateUserStatus(final String status){
+
         mVars = Vars.getInstance();
         if (mVars.getPrimaryKey()  == null){
             return;
@@ -544,7 +545,7 @@ public class GameDatabase {
 
     }
 
-    // -------------------------------------------------------------------------------------------------------- //
+    // --------------------------------------------------------------------------------------------- //
 
     /**
      * Function to add User to Database
@@ -571,5 +572,36 @@ public class GameDatabase {
         user.setValue(mUser);
 
         return user.getKey();
+    }
+
+    // --------------------------------------------------------------------------------------------- //
+
+    /**
+     * Function to change status of a game
+     * @param status
+     */
+    public void changeGameStatus(String status){
+
+        mVars = Vars.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference = mFirebaseDatabase.getReference();
+
+        mDatabaseReference.child("Games").child(mVars.getGameID()).child("status").setValue(status);
+    }
+
+    // --------------------------------------------------------------------------------------------- //
+
+    /**
+     * Function to update status[Ready/notReady] of player in a game
+     * @param value
+     */
+    public void updateReadyValue(String value) {
+
+        mVars = Vars.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference = mFirebaseDatabase.getReference();
+
+        mDatabaseReference.child("Games").child(mVars.getGameID()).child("Players").child(mVars.getPlayerID()).child("ready").setValue(value);
+
     }
 }

@@ -47,7 +47,7 @@ public class JoinGame extends AppCompatActivity implements View.OnClickListener 
             case R.id.JoinGame_joinGame:
                 gameID = gameIDEdt.getText().toString();
                 mVars.setGameID(gameID);
-                mVars.setPlayerID(mGameDatabase.joinGame());
+                mVars.setPlayerID(mGameDatabase.joinGame(mVars.getPlayerName(),mVars.getLatitude(),mVars.getLongitude()));
                 Intent intent = new Intent(JoinGame.this,PlayersInGame.class);
                 startActivity(intent);
                 break;

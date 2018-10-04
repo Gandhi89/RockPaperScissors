@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/db1_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/waiting_gID"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:gravity="center"
+        android:text="GameID"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ListView
+        android:id="@+id/waiting_listView"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:orientation="vertical">
+    </ListView>
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/waiting_countDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="starting in: "
+            android:visibility="invisible"
+            android:layout_centerVertical="true"
+            android:textSize="15dp"/>
+        <TextView
+            android:id="@+id/waiting_countDown1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="starting in: "
+            android:visibility="invisible"
+            android:layout_centerVertical="true"
+            android:textSize="15dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true">
+
+            <Button
+                android:id="@+id/waiting_btnCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_alignParentRight="true"
+                android:text="cancel" />
+
+            <Button
+                android:id="@+id/waiting_btnReady"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:text="Ready" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>
