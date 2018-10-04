@@ -32,10 +32,11 @@ dependencies {
 
     // firebase authentication UI
     implementation 'com.firebaseui:firebase-ui-auth:4.0.0'
-    // firebase authentication
-    implementation 'com.google.firebase:firebase-auth:16.0.3'
 
-    //Gesture
+    // firebase authentication
+    implementation 'com.google.firebase:firebase-auth:16.0.1'
+
+    // Gesture
     implementation 'com.squareup:seismic:1.0.2'
 
     // google map and location

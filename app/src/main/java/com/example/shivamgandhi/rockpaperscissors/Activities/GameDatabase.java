@@ -469,4 +469,107 @@ public class GameDatabase {
         });
 
     }
+
+    // --------------------------------------------------------------------------------------------- //
+
+    /**
+     * Function to get all value of user and set it in Vars
+     * @param primaryKey
+     */
+
+    public void setupVars(final String primaryKey){
+
+        mVars = Vars.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference = mFirebaseDatabase.getReference();
+
+        mDatabaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot postData:dataSnapshot.getChildren()){
+                    if (primaryKey.equals(postData.getKey())){
+                        User user = postData.getValue(User.class);
+                        mVars.setPlayerName(user.userName);
+                        mVars.setPrimaryKey(postData.getKey());
+                        mVars.setLatitude(user.lat);
+                        mVars.setLongitude(user.log);
+                        mVars.setTitle(user.title);
+                        mVars.setWon(user.won);
+                        mVars.setPlayed(user.played);
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    // --------------------------------------------------------------------------------------------- //
+
+    /**
+     * Function to update user's status[online/offline]
+     * @param status
+     */
+    public void updateUserStatus(final String status){
+        mVars = Vars.getInstance();
+        if (mVars.getPrimaryKey()  == null){
+            return;
+        }
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference = mFirebaseDatabase.getReference();
+
+        mDatabaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot postData:dataSnapshot.getChildren()){
+                    if ( mVars.getPrimaryKey().equals(postData.getKey())){
+
+                        User user = postData.getValue(User.class);
+                        user.Status = status;
+                        mDatabaseReference.child("Users").child(mVars.getPrimaryKey()).setValue(user);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    // -------------------------------------------------------------------------------------------------------- //
+
+    /**
+     * Function to add User to Database
+     * @param email
+     * @param uName
+     * @param won
+     * @param played
+     * @param title
+     * @param lat
+     * @param log
+     * @param status
+     * @return "primarykey of new user"
+     */
+    public String addUser(String email, String uName, int won,int played, String title, double lat, double log, String status) {
+        mVars = Vars.getInstance();
+        mUser = new User();
+        mUser = new User(email, uName, won,played, title, lat, log, status);
+
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference = mFirebaseDatabase.getReference();
+
+        DatabaseReference users = mDatabaseReference.child("Users");
+        DatabaseReference user = users.push();
+        user.setValue(mUser);
+
+        return user.getKey();
+    }
 }

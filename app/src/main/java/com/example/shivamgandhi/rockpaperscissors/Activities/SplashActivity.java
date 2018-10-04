@@ -145,6 +145,7 @@ public class SplashActivity extends AppCompatActivity {
             mFusedLocationClient.requestLocationUpdates(mLocationRequest,
                     mLocationCallback,
                     null /* Looper */);
+
         }
         catch (SecurityException e) {
             Log.d("SplashScn/lctn is:-", "Exception during loc updates: " + e.toString());
