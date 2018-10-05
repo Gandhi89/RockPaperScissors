@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Activities.MainActivity"></activity>
         <activity android:name=".Activities.PlayersInGame" />
-        <activity android:name=".Activities.JoinGame" />
+        <activity android:name=".Activities.NearByGames" />
         <activity android:name=".Activities.HomeActivity" />
         <activity android:name=".Activities.CalculateResultActivity" />
         <activity android:name=".Activities.SplashActivity">

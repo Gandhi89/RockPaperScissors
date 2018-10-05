@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(i);
                 break;
             case R.id.MainActivity_joinGameBtn:
-                Intent intent = new Intent(MainActivity.this,JoinGame.class);
+                Intent intent = new Intent(MainActivity.this,NearByGames.class);
                 startActivity(intent);
                 break;
             case R.id.MainActivity_showNearByPlayers:

@@ -10,7 +10,7 @@ import android.widget.EditText;
 import com.example.shivamgandhi.rockpaperscissors.R;
 import com.example.shivamgandhi.rockpaperscissors.Utils.Vars;
 
-public class JoinGame extends AppCompatActivity implements View.OnClickListener {
+public class NearByGames extends AppCompatActivity implements View.OnClickListener {
 
     EditText gameIDEdt;
     Button joinGameBtn;
@@ -48,7 +48,7 @@ public class JoinGame extends AppCompatActivity implements View.OnClickListener 
                 gameID = gameIDEdt.getText().toString();
                 mVars.setGameID(gameID);
                 mVars.setPlayerID(mGameDatabase.joinGame(mVars.getPlayerName(),mVars.getLatitude(),mVars.getLongitude()));
-                Intent intent = new Intent(JoinGame.this,PlayersInGame.class);
+                Intent intent = new Intent(NearByGames.this,PlayersInGame.class);
                 startActivity(intent);
                 break;
         }

@@ -50,6 +50,7 @@ public class WaitingActivity extends AppCompatActivity implements View.OnClickLi
 
         initializeAll();
         onClickEvents();
+        gameIDTv.append(" : "+mVars.getGameID());
         adapter_waitingActivity_playerStatus = new Adapter_WaitingActivity_PlayerStatus(WaitingActivity.this,players,status);
         playersListView.setAdapter(adapter_waitingActivity_playerStatus);
 
