@@ -57,7 +57,7 @@ public class HomeActivity extends AppCompatActivity implements ShakeDetector.Lis
         }.start();
 
 
-    }
+    }// end of onCreate()
 
     private void InitializeAll() {
 

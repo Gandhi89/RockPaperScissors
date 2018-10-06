@@ -117,4 +117,15 @@ public class NearByGames extends AppCompatActivity {
 
         }
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mGameDatabase.updateUserStatus("online");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mGameDatabase.updateUserStatus("offline");
+    }
 }

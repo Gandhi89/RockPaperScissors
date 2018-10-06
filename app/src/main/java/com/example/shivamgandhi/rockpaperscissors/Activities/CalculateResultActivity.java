@@ -86,7 +86,7 @@ public class CalculateResultActivity extends AppCompatActivity {
         }
         else if(resultTv.getText().toString().equals("draw"))
         {
-            Intent intent = new Intent(CalculateResultActivity.this,PlayersInGame.class);
+            Intent intent = new Intent(CalculateResultActivity.this,WaitingActivity.class);
             startActivity(intent);
         }
 
@@ -152,7 +152,7 @@ public class CalculateResultActivity extends AppCompatActivity {
                     resultTv.setText("You are ultimate winner. THE CHAMPION.");
                 }
                 else {
-                    Intent i = new Intent(CalculateResultActivity.this, PlayersInGame.class);
+                    Intent i = new Intent(CalculateResultActivity.this, WaitingActivity.class);
                     startActivity(i);
                 }
             }

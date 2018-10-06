@@ -269,4 +269,16 @@ public class WaitingActivity extends AppCompatActivity implements View.OnClickLi
 
         }
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mGameDatabase.updateUserStatus("online");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mGameDatabase.updateUserStatus("offline");
+    }
 }
