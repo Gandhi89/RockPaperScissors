@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -42,6 +43,8 @@ public class NearByGames extends AppCompatActivity {
         setContentView(R.layout.activity_join_game);
 
         initializeAll();
+        onClickEvent();
+
         mAdapter_NearByGames_Games = new Adapter_NearByGames_Games(NearByGames.this,games);
         nearByGamesLv.setAdapter(mAdapter_NearByGames_Games);
 
@@ -49,6 +52,19 @@ public class NearByGames extends AppCompatActivity {
         getNeatByGames();
 
     }// end of onCreate()
+
+    private void onClickEvent() {
+        nearByGamesLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                gameID = games.get(i);
+                mVars.setGameID(gameID);
+                mVars.setPlayerID(mGameDatabase.joinGame(mVars.getPlayerName(),mVars.getLatitude(),mVars.getLongitude()));
+                Intent intent = new Intent(NearByGames.this,WaitingActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
 
     private void getNeatByGames() {
 
